@@ -5,41 +5,125 @@
         <meta charset="UTF-8" />
         <title>ATN Toy Store</title>
     </head>
+<style>
+    .container {
+        margin: 30px 50px;
+      }
 
-    <body>
+      .mb-3 {
+        margin: 0 20px;
+      }
+
+      .mb20 {
+        margin-bottom: 20px;
+      }
+
+      .info input,
+      .info textarea {
+        width: 300px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid red;
+        border-radius: 4px;
+      }
+
+      .btn {
+        background: rgb(16, 128, 16);
+        padding: 10px 20px;
+        border: 0;
+        color: white;
+        width: 100px;
+        border-radius: 10px;
+        margin: 20px;
+      }
+
+      .btn:hover {
+        cursor: pointer;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 50px;
+        text-transform: uppercase;
+        color: rgb(43, 118, 0);
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        padding: 10px;
+      }
+
+      .grid-item {
+        background-color: rgba(255, 255, 255, 0.245);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        margin: 10px;
+      }
+
+</style>
+    <body class="container" >
         <h1>Input product to database.</h1>
         
         <!-- (1): CREATE Task -->         
         <!-- --> 
-        <form action="/quotes" method="POST">   
-            <input type="text" placeholder="Product name" name="Product" />        
-            <input type="text" placeholder="Price" name="Price" />
-            <INPUT TYPE="Radio" Name="ingredients"  Value="V">Vinyl
-            <INPUT TYPE="Radio" Name="ingredients"  Value="AP">ABS Plastic
-            <INPUT TYPE="Radio" Name="ingredients"  Value="P">Polystone 
-            <button type="submit">Submit</button>
-        </form>
-        <!-- -->                               
-
-        <!-- (2) READ Task -->                        
-        <h2> Products in Database </h2>
-        <ul class="quotes">
-            <!-- Loop through quotes -->
-            <% for(var i = 0; i < quotes.length; i++) {%>
-                <li class="quote">
-                    Product name:
-                    <!-- Output Product from the iterated quote object -->
-                    <span><%= quotes[i].Product %></span>
-                    Price:
-                    <!-- Output Price from the iterated quote object -->
-                    <span><%= quotes[i].Price %></span>VNĐ
-                    ingredients:
-                    <!-- Output ingredients from the iterated quote object -->
-                    <span><%= quotes[i].ingredients %></span>
-                </li>
-            <% } %>
-            
-        </ul>    
+        <div class="grid-container">
+            <div class="grid-item">
+                <form action="/quotes" method="POST">   
+                    <div  class="info">Product Name: <br>
+                        <input type="text" placeholder="Insert product name" name="Product" /></div>
+                    <div  class="info">Price:<br>
+                        <input type="text" placeholder="Insert Price" name="Price" /></div>
+                    <div  class="info">Description:<br>
+                        <textarea type="text" placeholder="Description" name="Description"></textarea>
+                    </div>
+                    
+                    <div>Materials:
+                        <br>
+                        <INPUT TYPE="Radio" Name="ingredients"  Value="V">Vinyl
+                            <br>
+                        <INPUT TYPE="Radio" Name="ingredients"  Value="AP">ABS Plastic
+                            <br>
+                        <INPUT TYPE="Radio" Name="ingredients"  Value="P">Polystone 
+                            <br>
+                        <button class="btn" type="submit">Submit</button>
+                    </div>
+                    </form>
+            </div>
+           
+                <!-- -->                               
+        
+                <!-- (2) READ Task -->     
+            <div class="grid-item">
+                <h2> Products in Database </h2>
+        
+                <ul class="quotes">
+                    <!-- Loop through quotes -->
+                    <% for(var i = 0; i < quotes.length; i++) {%>
+                        <li class="quote">
+                            Product name:
+                            <!-- Output Product from the iterated quote object -->
+                            <span><%= quotes[i].Product %></span> <br>
+                            Price:
+                            <!-- Output Price from the iterated quote object -->
+        
+                            <span><%= quotes[i].Price %></span>VNĐ <br>
+                            Description: 
+                            <!-- Output Description from the iterated quote object-->
+                            <span><%= quotes[i].Description%></span> <br>
+                            ingredients:
+                            <!-- Output ingredients from the iterated quote object -->
+                            <span><%= quotes[i].ingredients %></span>
+                        </li>
+                    <% } %>
+                    
+                </ul>    
+            </div>                   
+                
+        </div>
+        
     
     </body>
 
